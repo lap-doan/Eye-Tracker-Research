@@ -4,7 +4,7 @@ This is Lap Doan's Psych 196B project, working as a research assistant under Mag
 # How to use
 
 Run the calibration process on iViewRED first. Then run eye_track.py.
-If eye_track.py does not run, make sure that directkeys.py and iViewXAPI.dll are in the same directory.
+If eye_track.py does not run, make sure that directkeys.py and the appropriate iViewXAPI.dll file are in the same directory.
 When eye_track.py is run, it will display a message stating "Tracking gaze in [number] seconds..."
 
 # Customizable Constants:
@@ -47,6 +47,9 @@ eye_track.py now prints location for the average gaze between left and right eye
 Initially looked into controller.Controller() for keyboard presses, which was from the previous RA's code. This could produce key presses in Notepad, but not Pokemon Reborn.
 Created directkeys.py, derived from ScanCodes, in order to do keyboard presses. This produces unfilterable key presses, as opposed to controller.Controller. This works for Pokemon Reborn.
 Added logic to pause the game when the gaze is in the desired area.
+
+7/17
+Tested the program 
 
 # Resources Used
 For basic iView API code:
