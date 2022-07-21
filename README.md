@@ -47,7 +47,9 @@ CONST_DEBUG: If set to True, the program will print live information on the part
 
 
 # Daily progress
+
 6/26
+
 Downloaded the necessary modules to get GazeTracking.py to work: CMake, dlib, and pynput.
 
 Created a github repository to track changes.
@@ -57,12 +59,15 @@ Tested GazeTracking.py, defaults to computer camera instead of eye tracking came
 Tested simple_tracker_experiment.py. Window generated is too large to fit on the screen, won't get any smaller. The program appears to not work.
 
 7/3
+
 After reading over the User manual and SDK manual, I was able to get eye_track.py to print out data for the X location for the gaze of the left eye at a rate of 30 Hz, which is the rate that the eye tracker works at.
 
 7/10
+
 eye_track.py now prints location for the average gaze between left and right eyes. Also introduced some rudimentary pause logic.
 
 7/16
+
 Initially looked into controller.Controller() for keyboard presses, which was from the previous RA's code. This could produce key presses in Notepad, but not Pokemon Reborn.
 
 Created directkeys.py, derived from ScanCodes, in order to do keyboard presses. This produces unfilterable key presses, as opposed to controller.Controller. This works for Pokemon Reborn.
@@ -70,6 +75,7 @@ Created directkeys.py, derived from ScanCodes, in order to do keyboard presses. 
 Added logic to pause the game when the gaze is in the desired area.
 
 7/17
+
 Tested the program on both my laptop and PC, playing Pokemon Reborn, Minecraft, and BGB Emulator. I noticed a few concerns:
 
 1. If the 'Esc' button is used for other tasks in game, such as closing out of menus in Minecraft, then the pause/unpause behavior desyncs from the participant's gaze.
@@ -81,9 +87,14 @@ Tested the program on both my laptop and PC, playing Pokemon Reborn, Minecraft, 
 The program runs flawlessly on my laptop using the BGB emulator. My PC cannot run iViewRED consistently. Pokemon Reborn on my laptop occasionally does not register 'Esc' presses, but this issue occurs with manually pressed 'Esc' button presses as well, so this is not the fault of the program. Minecraft on my laptop tends to crash iViewRED, likely due to taking up a lot of resources.
 
 7/20
+
 Cleaned up the README and added a conditional for easy loading of the dll file.
 
 # Resources Used
+
+iView X SDK manual:
+https://tsgdoc.socsci.ru.nl/images/c/cb/IView_X_SDK_Manual.pdf
+
 For basic iView API code:
 https://github.com/esdalmaijer/PyGaze/blob/master/pygaze/_eyetracker/iViewXAPI.py
 
