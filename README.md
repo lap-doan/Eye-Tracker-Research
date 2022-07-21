@@ -1,5 +1,8 @@
 # Eye-Tracker-Research
+
 This is Lap Doan's Psych 196B project, working as a research assistant under Maggie Yeh and Professor Zili Liu.
+
+The purpose of this project is to be played in the background of a video game, using an iViewRED camera to track the participant's gaze. If the participant's gaze leaves a specified rectangular area, the program sends a keypress to pause the game; once their gaze returns to the area, the program sends a keypress to unpause the game.
 
 # How to use
 
