@@ -1,3 +1,5 @@
+# Credit to https://stackoverflow.com/questions/14489013/simulate-python-keypresses-for-controlling-a-game for this code.
+
 import ctypes
 import time
 
