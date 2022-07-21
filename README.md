@@ -27,13 +27,13 @@ CONST_SAMPLING_RATE_HZ: the sampling rate of the eye-tracking camera, in Hz.
 
 CONST_TIME_AWAY_SECONDS: the amount of time a participant can look away from the intended area before pausing, in seconds.
 
-CONST_LEFT_BORDER: A number from 0.0 to 1.0, indicating the left border of the rectangle the participant is supposed to look at. This should be LESS than CONST_RIGHT_BORDER.
+*CONST_LEFT_BORDER: A number from 0.0 to 1.0, indicating the left border of the rectangle the participant is supposed to look at. This should be LESS than CONST_RIGHT_BORDER.
 
-CONST_RIGHT_BORDER: A number from 0.0 to 1.0, indicating the right border of the rectangle the participant is supposed to look at. This should be GREATER than CONST_LEFT_BORDER.
+*CONST_RIGHT_BORDER: A number from 0.0 to 1.0, indicating the right border of the rectangle the participant is supposed to look at. This should be GREATER than CONST_LEFT_BORDER.
 
-CONST_TOP_BORDER: A number from 0.0 to 1.0, indicating the top border of the rectangle the participant is supposed to look at. This should be LESS than CONST_BOTTOM_BORDER.
+*CONST_TOP_BORDER: A number from 0.0 to 1.0, indicating the top border of the rectangle the participant is supposed to look at. This should be LESS than CONST_BOTTOM_BORDER.
 
-CONST_BOTTOM_BORDER: A number from 0.0 to 1.0, indicating the bottom border of the rectangle the participant is supposed to look at. This should be LESS than CONST_TOP_BORDER.
+*CONST_BOTTOM_BORDER: A number from 0.0 to 1.0, indicating the bottom border of the rectangle the participant is supposed to look at. This should be LESS than CONST_TOP_BORDER.
 
 CONST_BUTTON_CODE: The button code of the key to be pressed. At the time of release, this is set to the 'Esc' key. Refer to: https://web.archive.org/web/20190801085838/http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
 
@@ -45,6 +45,7 @@ CONST_IS_64_BIT: True if the computer the program is running on is 64-bit; False
 
 CONST_DEBUG: If set to True, the program will print live information on the participant's gaze and whether the game is paused or not.
 
+* Regarding border constants, if the boundary is on the screen's border (0.0 or 1.0), it may be better to set the boundary to be slightly less than 0.0 or greater than 1.0 (ie -0.1 or 1.1).
 
 # Daily progress
 
