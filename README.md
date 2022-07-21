@@ -35,7 +35,7 @@ CONST_TOP_BORDER: A number from 0.0 to 1.0, indicating the top border of the rec
 
 CONST_BOTTOM_BORDER: A number from 0.0 to 1.0, indicating the bottom border of the rectangle the participant is supposed to look at. This should be LESS than CONST_TOP_BORDER.
 
-CONST_BUTTON_CODE: The button code of the key to be pressed. At the time of release, this is set to 'Esc'. Refer to: https://web.archive.org/web/20190801085838/http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
+CONST_BUTTON_CODE: The button code of the key to be pressed. At the time of release, this is set to the 'Esc' key. Refer to: https://web.archive.org/web/20190801085838/http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
 
 CONST_BUTTON_PRESS_TIME_SECONDS: The amount of time, in seconds, that the button is pushed down before being released.
 
@@ -77,6 +77,8 @@ Tested the program on both my laptop and PC, playing Pokemon Reborn, Minecraft, 
 2. If the game does not register an 'Esc' press to pause/unpause (present in Pokemon Reborn when the player is walking sometimes), then a similar desync can occur.
 
 3. Running iViewRED concurrently with certain games appears to be impossible, regardless of whether this program is also being run.
+
+The program runs flawlessly on my laptop using the BGB emulator. My PC cannot run iViewRED consistently. Pokemon Reborn on my laptop occasionally does not register 'Esc' presses, but this issue occurs with manually pressed 'Esc' button presses as well, so this is not the fault of the program. Minecraft on my laptop tends to crash iViewRED, likely due to taking up a lot of resources.
 
 7/20
 Cleaned up the README and added a conditional for easy loading of the dll file.
