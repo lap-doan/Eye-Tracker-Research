@@ -26,6 +26,8 @@ CONST_BUTTON_PRESS_TIME_SECONDS = 0.1
 
 CONST_SETUP_TIME_SECONDS = 5
 
+CONST_IS_64_BIT = True
+
 CONST_DEBUG = False
 
 
@@ -88,7 +90,10 @@ class CAccuracy(Structure):
 #        Loading iViewX.dll 
 #===========================
 
-iViewXAPI = windll.LoadLibrary("./iViewXAPI64.dll")
+if CONST_IS_64_BIT:
+    iViewXAPI = windll.LoadLibrary("./iViewXAPI64.dll")
+else:
+    iViewXAPI = windll.LoadLibrary("./iViewXAPI.dll")
 
 #===========================
 #        Get screen res
@@ -121,9 +126,13 @@ def main():
     num_failed_readings = 0
 
     # Wait for setup time to complete
-    print("Tracking gaze in " + str(CONST_SETUP_TIME_SECONDS) + " seconds...")
+    print("Will unpause the game and begin tracking gaze in " + str(CONST_SETUP_TIME_SECONDS) + " seconds...")
     time.sleep(CONST_SETUP_TIME_SECONDS)
-    print("Tracking now!")
+    directkeys.PressKey(CONST_BUTTON_CODE)
+    time.sleep(CONST_BUTTON_PRESS_TIME_SECONDS)
+    directkeys.ReleaseKey(CONST_BUTTON_CODE)
+    time.sleep(CONST_BUTTON_PRESS_TIME_SECONDS)
+    print("Game unpaused; tracking now!")
     
     time_of_current_state = time.time()
     last = time.time()
