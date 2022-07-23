@@ -16,15 +16,15 @@ import tkinter as tk
 CONST_SAMPLING_RATE_HZ = 30.0
 CONST_TIME_AWAY_SECONDS = 0.5
 
-CONST_LEFT_BORDER = -0.5
-CONST_RIGHT_BORDER = 0.171
-CONST_TOP_BORDER = 0.348
-CONST_BOTTOM_BORDER = 0.652
+CONST_LEFT_BORDER = -0.1
+CONST_RIGHT_BORDER = 0.106
+CONST_TOP_BORDER = 0.416
+CONST_BOTTOM_BORDER = 0.584
 
 CONST_BUTTON_CODE = 0x01 #esc
 CONST_BUTTON_PRESS_TIME_SECONDS = 0.1
 
-CONST_SETUP_TIME_SECONDS = 5
+CONST_SETUP_TIME_SECONDS = 10
 
 CONST_IS_64_BIT = True
 
@@ -116,10 +116,13 @@ sampleData = CSample(0,leftEye,rightEye,0)
 eventData = CEvent(b'F', b'L', 0, 0, 0, 0, 0)
 accuracyData = CAccuracy(0,0,0,0)
 
-iViewXAPI.iV_ConnectLocal()
-
 # Main loop
 def main():
+    connection_status = iViewXAPI.iV_ConnectLocal()
+
+    if connection_status == 100:
+        print("Error: could not connect")
+
     current_gaze_x = 0.0
     current_gaze_y = 0.0
     game_paused = False

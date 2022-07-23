@@ -94,7 +94,26 @@ The program runs flawlessly on my laptop using the BGB emulator. My PC cannot ru
 
 Cleaned up the README and added a conditional for easy loading of the dll file.
 
+7/22
+
+Went on campus and tested the program. I ran into a few issues, but was able to solve them:
+
+I noticed that the Python file was unable to be run as an executable, but could be run from the command line. Investigating further, I realized that Python was not on the computer's PATH variable list, so I added it to there. Furthermore, I had to remove VSCode from the PATH variable list.
+
+I was initially unable to have my program read values from the iViewRED program due to the program being unable to establish a connection with the iViewRED's IP and socket. I attempted to change the iv_ConnectLocal() call to an iv_Connect() call with the IP's and sockets, but was unable to get it to work. Eventually, I just reinstalled iViewRED onto the computer, updating the API from version 4.2.0 to version 4.4.0.
+
+When testing the program with Medal of Honor: Warfighter, the program worked in most cases. However, a problem arose when the player was required to hold down the 'Alt' or 'Ctrl' keys. If one of these keys were held down, and then the 'Esc' key triggered from the player's gaze leaving the required area, a Windows shortcut would be triggered, exiting out of the game and desyncing the pause functionality. This was solved by changing the keybinds for 'Alt' and 'Ctrl' to C and X, respectively.
+
+I believe I have completed this project to the best of my ability. Nevertheless, a few concerns arise:
+
+It is possible for the player to inadvertently desync their gaze from the pause menu if they are clicking to shoot, the pause menu triggers because their gaze left the area, and the player accidentally clicks one of the pause menu options. This did not come up in testing, but I believe this is still possible.
+
+The current parameters of a 5x5 cm square and the pause menu triggering after 0.5 seconds of looking away are extremely punishing. Perhaps this is also due to the fact that I am very bad at the game in question.
+
 # Resources Used
+
+REDn Scientific System User Guide:
+http://www.humre.vu.lt/files/doc/Instrukcijos/SMI/REDnScientific.pdf
 
 iView X SDK manual:
 https://tsgdoc.socsci.ru.nl/images/c/cb/IView_X_SDK_Manual.pdf
