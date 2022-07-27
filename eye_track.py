@@ -173,9 +173,12 @@ def main():
         else:
             num_failed_readings = 0
 
-        # if too many failed readings, abort
+        # if too many failed readings, give warning
         if num_failed_readings > 0 and num_failed_readings % 100 == 0:
-            print("WARNING: " + str(num_failed_readings) + " consecutive failed readings")
+            if iViewXAPI.iV_IsConnected() == 101:
+                print("WARNING: Connection lost with iViewRED")
+            else:
+                print("WARNING: " + str(num_failed_readings) + " consecutive failed readings")
 
         # regular_x and regular_y range from 0.0 to 1.0.
         # -1.0 indicates some sort of error in getting gaze location.
