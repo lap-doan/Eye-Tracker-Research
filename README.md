@@ -4,6 +4,14 @@ This is Lap Doan's Psych 196B project, working as a research assistant under Mag
 
 The purpose of this project is to be played in the background of a video game, using an iViewRED camera to track the participant's gaze. If the participant's gaze leaves a specified rectangular area, the program sends a keypress to pause the game; once their gaze returns to the area, the program sends a keypress to unpause the game.
 
+# Contact
+
+Please contact me at lapdoan01@gmail.com if you have any questions about this project.
+
+# Current Issues
+
+As of right now, when tested on hardware in the UCLA Psychology lab, the program stops recording after a while. This is likely due to iViewRED being finicky with its connection. My suggestion to future interns is to attempt to reconnect to the camera using ConnectLocal() if a disconnection is detected (currently eye_track.py is set to print "WARNING: Connection lost with iViewRED" without attempting to reconnect).
+
 # How to use
 
 1. Refer to the constants below in order to customize the behavior of the program. To modify these constants, open eye_track.py in a text editor.
