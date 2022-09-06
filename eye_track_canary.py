@@ -34,10 +34,11 @@ CONST_SETUP_TIME_SECONDS = 10
 
 CONST_IS_64_BIT = True
 
-CONST_DEBUG = False
-
 CONST_GAME_WINDOW_NAME = "Medal of Honor: Warfighter"
 
+CONST_LOGFILE_NAME = "logfile.csv"
+
+CONST_DEBUG = False
 
 #===========================
 #        Struct Definition
@@ -150,6 +151,8 @@ def main():
     time_of_current_state = time.time()
     last = time.time()
 
+    f = open(CONST_LOGFILE_NAME, "a")
+
     while True:
         # record every 1 / CONST_SAMPLING_RATE_HZ seconds
         next = last + 1.0 / CONST_SAMPLING_RATE_HZ
@@ -206,12 +209,13 @@ def main():
         # Update time_of_current_state accordingly.
 
         current_time = time.time()
+        target_window_active = gw.getActiveWindow().title == CONST_GAME_WINDOW_NAME
 
         # Update time_of_current_state (the last recorded time that is congruent with the current program's state) if one of the following is true:
         #    The state is paused, and the gaze is out of range (ie, keep the game paused)
         #    The state is unpaused, and the gaze is in range (ie, keep the game unpaused)
         #    The current window is not the target game (ie, keep the program in either the paused/unpaused state)
-        if game_paused == out_of_range or gw.getActiveWindow().title != CONST_GAME_WINDOW_NAME:
+        if game_paused == out_of_range or not target_window_active:
             time_of_current_state = current_time
 
         # If time_of_current_state is too far in the past, toggle game_paused and send a keypress.
@@ -223,6 +227,9 @@ def main():
             directkeys.ReleaseKey(CONST_BUTTON_CODE)
             time.sleep(CONST_BUTTON_PRESS_TIME_SECONDS)
             time_of_current_state = current_time
+
+        # LOG
+        f.write(str(current_time) + "," + str(regular_x) + "," + str(regular_y) + "," + str(out_of_range) + "," + str(game_paused) + "," + str(target_window_active) + "\n")
 
         # DEBUG
         if CONST_DEBUG:

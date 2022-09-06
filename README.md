@@ -16,6 +16,8 @@ The program does not function properly when the game window is not active, such 
 
 This repository includes a canary build eye_track_canary.py which attempts to implement both of these solutions. They have not been tested on UCLA Psychology lab hardware.
 
+The canary build also has an untested logging function where it will log the participant's gaze as well as other data to logfile.csv.
+
 # How to use
 
 1. Refer to the constants below in order to customize the behavior of the program. To modify these constants, open eye_track.py in a text editor.
@@ -28,11 +30,27 @@ This repository includes a canary build eye_track_canary.py which attempts to im
 
 5. Minimize eye_track.py, letting it run in the background of the game. After CONST_SETUP_TIME_SECONDS seconds have passed, the game will unpause, and the study will begin.
 
+If eye_track_canary.py is run, the program will log the participant's gaze data as well as other data to logfile.csv. The columns of logfile.csv are organized as follows:
+
+- Time the observation was taken, in seconds. Large gaps in time indicate differences in trials.
+
+- X value of where the participant is looking at, from 0.0 (left) to 1.0 (right). A value of -1 indicates a failed reading.
+
+- Y value of where the participant is looking at, from 0.0 (top) to 1.0 (bottom). A value of -1 indicates a failed reading.
+
+- TRUE/FALSE value of whether the participant is looking away from the intended area. If the reading failed, this value will always be TRUE.
+
+- TRUE/FALSE value of whether the game is currently paused. This is determined from the program's key outputs, and may be out of sync if the participant manually pauses the game.
+
+- TRUE/FALSE value of whether the current active window is the target window.
+
 # Troubleshooting
 
 If eye_track.py is crashing immediately, make sure that iViewXAPI64.dll, iViewXAPI.dll, and directkeys.py are in the same directory as eye_track.py. Also check if the following libraries are installed: ctypes, time, tkinter
 
 If eye_track.py is printing "WARNING: [number] consecutive failed readings", then it is failing to receive data from the iViewRED camera. Make sure that the camera is properly configured, and that the iViewRED camera is still running. This warning can also occur if the participant looks away from the screen or closes their eyes for an extended period of time.
+
+If eye_track_canary.py crashes immediately, make sure that pygetwindow is installed. To install it, uncomment the "#import pip" line and the "#pip.main(['install', 'pygetwindow'])" line following it.
 
 # Customizable Constants:
 
@@ -59,6 +77,8 @@ CONST_SETUP_TIME_SECONDS: The amount of time that the program will wait before t
 CONST_IS_64_BIT: True if the computer the program is running on is 64-bit; False if 32-bit. This determines whether iViewXAPI64.dll or iViewXAPI.dll is loaded.
 
 CONST_GAME_WINDOW_NAME (canary build only): The name of the window that should be active when the program is running. Currently, this is set to "Medal of Honor: Warfighter"; however, testing needs to be conducted to determine if the active window is actually named this when playing the game.
+
+CONST_LOGFILE_NAME (canary build only): The name of the log file.
 
 CONST_DEBUG: If set to True, the program will print live information on the participant's gaze and whether the game is paused or not. In the canary build, it will also print out the name of the current active window.
 
