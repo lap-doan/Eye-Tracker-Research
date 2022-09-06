@@ -10,7 +10,11 @@ Please contact me at lapdoan01@gmail.com if you have any questions about this pr
 
 # Current Issues
 
-As of right now, when tested on hardware in the UCLA Psychology lab, the program stops recording after a while. This is likely due to iViewRED being finicky with its connection. My suggestion to future interns is to attempt to reconnect to the camera using ConnectLocal() if a disconnection is detected (currently eye_track.py is set to print "WARNING: Connection lost with iViewRED" without attempting to reconnect).
+As of right now, when tested on hardware in the UCLA Psychology lab, the program stops recording after a while. This is likely due to iViewRED being finicky with its connection. The proposed solution is to attempt to reconnect to the camera using ConnectLocal() if a disconnection is detected (currently eye_track.py is set to print "WARNING: Connection lost with iViewRED" without attempting to reconnect).
+
+The program does not function properly when the game window is not active, such as when Alt-Tab is pressed to switch the current window. The proposed solution is to have the program check the name of the current active window and compare it against CONST_GAME_WINDOW_NAME.
+
+This repository includes a canary build eye_track_canary.py which attempts to implement both of these solutions. They have not been tested on UCLA Psychology lab hardware.
 
 # How to use
 
@@ -54,7 +58,9 @@ CONST_SETUP_TIME_SECONDS: The amount of time that the program will wait before t
 
 CONST_IS_64_BIT: True if the computer the program is running on is 64-bit; False if 32-bit. This determines whether iViewXAPI64.dll or iViewXAPI.dll is loaded.
 
-CONST_DEBUG: If set to True, the program will print live information on the participant's gaze and whether the game is paused or not.
+CONST_GAME_WINDOW_NAME (canary build only): The name of the window that should be active when the program is running. Currently, this is set to "Medal of Honor: Warfighter"; however, testing needs to be conducted to determine if the active window is actually named this when playing the game.
+
+CONST_DEBUG: If set to True, the program will print live information on the participant's gaze and whether the game is paused or not. In the canary build, it will also print out the name of the current active window.
 
 *Regarding border constants, if the boundary is on the screen's border (0.0 or 1.0), it may be better to set the boundary to be slightly less than 0.0 or greater than 1.0 (ie -0.1 or 1.1).
 
@@ -137,3 +143,6 @@ https://stackoverflow.com/questions/3129322/how-do-i-get-monitor-resolution-in-p
 
 Keyboard scan codes:
 https://web.archive.org/web/20190801085838/http://www.gamespp.com/directx/directInputKeyboardScanCodes.html
+
+Getting name of active window:
+https://stackoverflow.com/questions/65362756/getting-process-name-of-focused-window-with-python
